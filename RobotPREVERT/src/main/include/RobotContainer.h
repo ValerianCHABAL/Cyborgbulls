@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Constants.h"
 #include <frc2/command/Command.h>
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
@@ -15,7 +16,7 @@ public:
     Drivetrain m_Drivetrain;
 
 private:
-    void ConfigureButtonBindings();$
+    void ConfigureButtonBindings();
 
     frc::Joystick m_DriverRightJoystick{DRIVER_JOYSTICK_RIGHT_ID};
     frc::Joystick m_DriverLeftJoystick{DRIVER_JOYSTICK_LEFT_ID};
