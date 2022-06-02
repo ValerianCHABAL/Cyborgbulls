@@ -6,16 +6,17 @@
 
 #include <frc2/command/SubsystemBase.h>
 
-class drivetrain : public frc2::SubsystemBase {
- public:
-  drivetrain();
+class Drivetrain : public frc2::SubsystemBase
+{
+public:
+  Drivetrain();
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   void Periodic() override;
 
- private:
+private:
   // Components (e.g. motor controllers and sensors) should generally be
   // declared private and exposed only through public methods.
 };
