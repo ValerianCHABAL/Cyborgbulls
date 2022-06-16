@@ -6,8 +6,14 @@
 
 Drivetrain::Drivetrain()
 {
-    
-};
+  m_MotorRight.SetInverted(true);
+  m_MotorRightFollow.SetInverted(true);
+  m_MotorLeft.SetInverted(false);
+  m_MotorLeftFollow.SetInverted(false);
+
+  m_MotorRightFollow.Follow(m_MotorRight);
+  m_MotorLeftFollow.Follow(m_MotorLeft);
+}
 
 // This method will be called once per scheduler run
 void Drivetrain::Periodic() {}
