@@ -3,7 +3,7 @@
 RobotContainer::RobotContainer()
 {
 
-  ConfigureButtonBindings();
+  // ConfigureButtonBindings();
 
   m_Drivetrain.SetDefaultCommand(Drive(
       [=]
@@ -11,5 +11,4 @@ RobotContainer::RobotContainer()
       [=]
       { return m_DriverRightJoystick.GetZ(); },
       &m_Drivetrain));
-
 }

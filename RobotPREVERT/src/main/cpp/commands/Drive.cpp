@@ -3,21 +3,29 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "commands/Drive.h"
+#include "lib/Utils.h"
 
-Drive::Drive() {
-  // Use addRequirements() here to declare subsystem dependencies.
+Drive::Drive(std::function<double()> forward, std::function<double()> turn, Drivetrain *pdrivetrain)
+    : m_Forward(forward), m_Turn(turn), m_pDrivetrain(pdrivetrain)
+{
+  AddRequirements(m_pDrivetrain);
 }
 
-// Called when the command is initially scheduled.
-void Drive::Initialize() {}
+void Drive::Initialize()
+{
+}
 
-// Called repeatedly when this Command is scheduled to run
-void Drive::Execute() {}
+void Drive::Execute()
+{
+  double forward = utils::Deadband(m_Forward());
+  double turn = utils::Deadband(m_Turn());
 
-// Called once the command ends or is interrupted.
+  m_pDrivetrain->Drive(forward, turn);
+}
+
 void Drive::End(bool interrupted) {}
 
-// Returns true when the command should end.
-bool Drive::IsFinished() {
+bool Drive::IsFinished()
+{
   return false;
 }
