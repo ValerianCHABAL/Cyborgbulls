@@ -4,6 +4,20 @@
 
 #include "Drivetrain.h"
 
+#define TRACKWIDTH 0.61f
+#define HALF_TRACKWIDTH (TRACKWIDTH / 2.0f)
+
+#define AMAX 5.1 // Acceleration Max  au PIF .. à définir aux encodeurs
+#define VMAX 3.4 // vitesse Max  théorique (3,395472 sur JVN-DT) .. à vérifier aux encodeurs
+#define WMAX                       \
+    (((2.0 * VMAX) / TRACKWIDTH) / \
+     1.7) // vitesse angulaire Max theorique    .. à modifier avec Garice
+
+#define NABS(a) (((a) < 0) ? -(a) : (a))     // VALEUR ABSOLUE
+#define NMAX(a, b) (((a) > (b)) ? (a) : (b)) // Max
+#define NMIN(a, b) (((a) < (b)) ? (a) : (b)) // Min
+
+
 Drivetrain::Drivetrain()
 {
   m_MotorRight.SetInverted(true);
@@ -15,5 +29,19 @@ Drivetrain::Drivetrain()
   m_MotorLeftFollow.Follow(m_MotorLeft);
 }
 
-// This method will be called once per scheduler run
-void Drivetrain::Periodic() {}
+void Drivetrain::Drive(float forward, float turnn)
+{
+    double v = forward * VMAX;
+    double w = turn * WMAX;
+
+    double left_wheel = v + (w * HALF_TRACKWIDTH);
+    double right_wheel = v - (w * HALF_TRACKWIDTH);
+
+    double k;
+    k = 1.0 / (NMAX(VMAX, NMAX(NABS(left_wheel), NABS(right_wheel))));
+    left_wheel = k;
+    right_wheel= k;
+
+    m_MotorRight.Set(right_wheel);
+    m_MotorLeft.Set(left_wheel);
+}
