@@ -5,8 +5,9 @@
 #pragma once
 
 #include <string>
-
+#include "RobotContainer.h"
 #include <frc/TimedRobot.h>
+#include <frc/smartdashboard/SendableChooser.h>
 
 class Robot : public frc::TimedRobot
 {
@@ -17,4 +18,5 @@ public:
   void TeleopPeriodic() override;
 
 private:
+ RobotContainer m_container;
 };
