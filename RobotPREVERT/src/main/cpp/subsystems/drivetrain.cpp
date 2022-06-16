@@ -4,7 +4,10 @@
 
 #include "Drivetrain.h"
 
-Drivetrain::Drivetrain() = default;
+Drivetrain::Drivetrain()
+{
+    
+};
 
 // This method will be called once per scheduler run
 void Drivetrain::Periodic() {}
