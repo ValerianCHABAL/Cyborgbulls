@@ -20,6 +20,8 @@ void Drive::Execute()
 {
   double forward = utils::Deadband(m_Forward());
   double turn = utils::Deadband(m_Turn());
+  forward *= 0.5;
+  turn *= 0.5;
 
   m_pDrivetrain->Drive(forward, turn);
 }
