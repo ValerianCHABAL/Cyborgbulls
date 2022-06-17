@@ -14,7 +14,10 @@ void Robot::RobotPeriodic() {}
 
 void Robot::TeleopInit() {}
 
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic()
+{
+  m_container.m_Drivetrain.Drive(0.2, 0.0);
+}
 
 #ifndef RUNNING_FRC_TESTS
 int main()
