@@ -44,3 +44,8 @@ void Drivetrain::Drive(float forward, float turn)
   m_MotorRight.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, right_wheel);
   m_MotorLeft.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, left_wheel);
 }
+
+void Drivetrain::Periodic()
+{
+  m_MotorRight.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.3);
+}

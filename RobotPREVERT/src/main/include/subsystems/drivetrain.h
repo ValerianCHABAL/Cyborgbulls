@@ -13,6 +13,7 @@ class Drivetrain : public frc2::SubsystemBase
 public:
   Drivetrain();
   void Drive(float forward, float turn);
+  void Periodic() override;
 
 private:
   ctre::phoenix::motorcontrol::can::TalonSRX m_MotorRight{CAN_ID_DRIVETRAIN_MOTOR_RIGHT};
