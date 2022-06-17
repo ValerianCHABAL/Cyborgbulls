@@ -12,3 +12,8 @@ RobotContainer::RobotContainer()
       { return m_DriverRightJoystick.GetZ(); },
       &m_Drivetrain));
 }
+
+void RobotContainer::ConfigureButtonBindings()
+{
+  frc2::CommandScheduler::GetInstance().ClearButtons();
+}
