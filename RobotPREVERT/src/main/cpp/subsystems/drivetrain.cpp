@@ -46,7 +46,7 @@ void Drivetrain::Drive(float forward, float turn)
 
   m_MotorRight.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, right_wheel);
   m_MotorLeft.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, left_wheel);
-  std::cout << "drive" << std::endl;
+  std::cout << "right_wheel" << std::endl;
 }
 
 void Drivetrain::Periodic()
