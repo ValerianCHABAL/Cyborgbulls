@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "subsystems/Drivetrain.h"
+#include <iostream>
 
 #define TRACKWIDTH 0.61f
 #define HALF_TRACKWIDTH (TRACKWIDTH / 2.0f)
@@ -48,4 +49,5 @@ void Drivetrain::Drive(float forward, float turn)
 void Drivetrain::Periodic()
 {
   m_MotorRight.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.3);
+  std::cout << "Periodic" << std::endl;
 }
