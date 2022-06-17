@@ -4,6 +4,7 @@
 
 #include "commands/Drive.h"
 #include "lib/Utils.h"
+#include <iostream>
 
 Drive::Drive(std::function<double()> forward, std::function<double()> turn, Drivetrain *pdrivetrain)
     : m_Forward(forward), m_Turn(turn), m_pDrivetrain(pdrivetrain)

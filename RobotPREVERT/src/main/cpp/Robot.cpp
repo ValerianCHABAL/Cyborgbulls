@@ -20,7 +20,6 @@ void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic()
 {
-  std::cout << "TeleopPeriodic" << std::endl;
 }
 
 #ifndef RUNNING_FRC_TESTS
