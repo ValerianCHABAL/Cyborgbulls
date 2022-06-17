@@ -44,8 +44,8 @@ void Drivetrain::Drive(float forward, float turn)
   left_wheel = k;
   right_wheel = k;
 
-  m_MotorRight.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, right_wheel);
-  m_MotorLeft.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, left_wheel);
+  m_MotorRight.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, right_wheel);
+  m_MotorLeft.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, left_wheel);
   std::cout << "drive" << std::endl;
 }
 
