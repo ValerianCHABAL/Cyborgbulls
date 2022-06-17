@@ -27,6 +27,8 @@ Drivetrain::Drivetrain()
 
   m_MotorRightFollow.Follow(m_MotorRight);
   m_MotorLeftFollow.Follow(m_MotorLeft);
+
+  std::cout << "Drivetrain" << std::endl;
 }
 
 void Drivetrain::Drive(float forward, float turn)
