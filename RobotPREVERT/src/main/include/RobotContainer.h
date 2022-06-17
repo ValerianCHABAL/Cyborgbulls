@@ -19,5 +19,4 @@ private:
     void ConfigureButtonBindings();
 
     frc::Joystick m_DriverRightJoystick{DRIVER_JOYSTICK_RIGHT_ID};
-    frc::Joystick m_DriverLeftJoystick{DRIVER_JOYSTICK_LEFT_ID};
 };
