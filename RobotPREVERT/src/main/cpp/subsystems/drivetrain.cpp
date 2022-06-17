@@ -31,21 +31,21 @@ Drivetrain::Drivetrain()
 
 void Drivetrain::Drive(float forward, float turn)
 {
-  // double v = forward * VMAX;
-  // double w = turn * WMAX;
+  double v = forward * VMAX;
+  double w = turn * WMAX;
 
-  // double left_wheel = v + (w * HALF_TRACKWIDTH);
-  // double right_wheel = v - (w * HALF_TRACKWIDTH);
+  double left_wheel = v + (w * HALF_TRACKWIDTH);
+  double right_wheel = v - (w * HALF_TRACKWIDTH);
 
-  // double k;
-  // k = 1.0 / (NMAX(VMAX, NMAX(NABS(left_wheel), NABS(right_wheel))));
-  // left_wheel = k;
-  // right_wheel = k;
+  double k;
+  k = 1.0 / (NMAX(VMAX, NMAX(NABS(left_wheel), NABS(right_wheel))));
+  left_wheel *= k;
+  right_wheel *= k;
 
-  m_MotorRight.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, forward);
-  m_MotorLeft.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, turn);
-  std::cout << forward << std::endl;
-  std::cout << turn << std::endl;
+  m_MotorRight.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, left_wheel);
+  m_MotorLeft.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, right_wheel);
+  std::cout << left_wheel << std::endl;
+  std::cout << right_wheel << std::endl;
 }
 
 void Drivetrain::Periodic()
