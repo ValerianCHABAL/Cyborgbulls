@@ -3,7 +3,7 @@
 RobotContainer::RobotContainer()
 {
 
-  // ConfigureButtonBindings();
+  ConfigureButtonBindings();
 
   m_Drivetrain.SetDefaultCommand(Drive(
       [=]
