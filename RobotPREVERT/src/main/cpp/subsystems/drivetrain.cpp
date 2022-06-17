@@ -50,6 +50,6 @@ void Drivetrain::Drive(float forward, float turn)
 
 void Drivetrain::Periodic()
 {
-  m_MotorRight.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.3);
+  // m_MotorRight.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.3);
   std::cout << "Periodic" << std::endl;
 }
