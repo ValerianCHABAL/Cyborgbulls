@@ -6,8 +6,8 @@
 #include "lib/Utils.h"
 #include <iostream>
 
-Drive::Drive(std::function<double()> forward, std::function<double()> turn, Drivetrain *pdrivetrain)
-    : m_Forward(forward), m_Turn(turn), m_pDrivetrain(pdrivetrain)
+Drive::Drive(std::function<double()> forward, std::function<double()> turn, std::function<double()> slide, Drivetrain *pdrivetrain)
+    : m_Forward(forward), m_Turn(turn), m_Slide(slide), m_pDrivetrain(pdrivetrain)
 {
   AddRequirements(m_pDrivetrain);
 }
@@ -20,8 +20,10 @@ void Drive::Execute()
 {
   double forward = utils::Deadband(m_Forward());
   double turn = utils::Deadband(m_Turn());
-  forward *= 0.5;
+  double slide = m_Slide();
+  forward *= slide;
   turn *= 0.5;
+  std::cout << "forward: " << forward << " turn: " << turn << " slide: " << slide << std::endl;
 
   m_pDrivetrain->Drive(forward, turn);
 }

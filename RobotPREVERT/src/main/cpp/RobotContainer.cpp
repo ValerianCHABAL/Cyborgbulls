@@ -10,6 +10,8 @@ RobotContainer::RobotContainer()
       { return -m_DriverRightJoystick.GetY(); },
       [=]
       { return m_DriverRightJoystick.GetZ(); },
+      [=]
+      { return m_DriverRightJoystick.GetThrottle(); },
       &m_Drivetrain));
 }
 
