@@ -20,7 +20,7 @@ void Drive::Execute()
 {
   double forward = utils::Deadband(m_Forward());
   double turn = utils::Deadband(m_Turn());
-  double slide = m_Slide();
+  double slide = std::abs(m_Slide());
   forward *= slide;
   turn *= 0.5;
   std::cout << "forward: " << forward << " turn: " << turn << " slide: " << slide << std::endl;
