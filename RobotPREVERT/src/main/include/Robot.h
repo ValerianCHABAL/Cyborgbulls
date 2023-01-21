@@ -16,8 +16,12 @@ public:
   void RobotPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+  void AutonomousPeriodic() override;
+  void AutonomousInit() override;
 
 private:
  RobotContainer m_container;
+ double m_count;
+ frc::Timer m_timer;
 
 };

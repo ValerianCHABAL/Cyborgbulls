@@ -5,7 +5,7 @@
 #include "Robot.h"
 
 #include <fmt/core.h>
-
+#include <frc/Timer.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <iostream>
 
@@ -17,17 +17,28 @@ void Robot::RobotPeriodic()
 }
 
 void Robot::AutonomousInit() {
-  m_container.m_drivetrain.Drive(0.3, 0.0);
-  double m_count=0;
+  
+  m_container.m_Drivetrain.Drive(0.0, 0.0);
+  m_count=0;
+  m_timer.Reset();
+  m_timer.Start();
 }
 
 void Robot::AutonomousPeriodic() {
-  m_count++;
+  
   std::cout << "count: " << m_count << std::endl;
-  if (m_count > 100) {
-    m_container.m_drivetrain.Drive(0.3, 0.0);
-  }
+ //while (m_count < 20000) {
+   while (m_timer.Get() < 1_s) {
+    m_container.m_Drivetrain.Drive(0.3, 0.0);
+    m_count++;
+ }  
+    while (m_timer.Get() > 1_s && m_timer.Get() < 2_s) {
+    m_container.m_Drivetrain.Drive(-0.3, 0.0);
+    m_count++;
+ }  
+    m_container.m_Drivetrain.Drive(0.0, 0.0);   
 }
+
 
 
 void Robot::TeleopInit() {}
