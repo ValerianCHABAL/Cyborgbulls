@@ -16,6 +16,20 @@ void Robot::RobotPeriodic()
   frc2::CommandScheduler::GetInstance().Run();
 }
 
+void Robot::AutonomousInit() {
+  m_container.m_drivetrain.Drive(0.3, 0.0);
+  double m_count=0;
+}
+
+void Robot::AutonomousPeriodic() {
+  m_count++;
+  std::cout << "count: " << m_count << std::endl;
+  if (m_count > 100) {
+    m_container.m_drivetrain.Drive(0.3, 0.0);
+  }
+}
+
+
 void Robot::TeleopInit() {}
 
 void Robot::TeleopPeriodic()

@@ -27,6 +27,12 @@ Drivetrain::Drivetrain()
 
   m_MotorRightFollow.Follow(m_MotorRight);
   m_MotorLeftFollow.Follow(m_MotorLeft);
+
+  m_MotorRight.ConfigVoltageCompSaturation(12);
+  m_MotorRightFollow.ConfigVoltageCompSaturation(12);
+  m_MotorLeft.ConfigVoltageCompSaturation(12);
+  m_MotorLeftFollow.ConfigVoltageCompSaturation(12);
+
 }
 
 void Drivetrain::Drive(float forward, float turn)
@@ -42,8 +48,8 @@ void Drivetrain::Drive(float forward, float turn)
   left_wheel *= k;
   right_wheel *= k;
 
-  m_MotorRight.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, left_wheel);
-  m_MotorLeft.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, right_wheel);
+  m_MotorRight.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, left_wheel); //
+  m_MotorLeft.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, right_wheel); // 
   std::cout << left_wheel << std::endl;
   std::cout << right_wheel << std::endl;
 }
